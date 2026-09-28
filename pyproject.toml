@@ -1,0 +1,55 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "pytidymodels"
+version = "0.9.0"
+description = "A tidymodels-style modular modeling grammar for Python, built on scikit-learn."
+readme = "README.md"
+requires-python = ">=3.10"
+license = { text = "MIT" }
+authors = [{ name = "Zia U. Ahmed" }]
+keywords = ["machine-learning", "tidymodels", "scikit-learn", "modeling", "preprocessing"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: MIT License",
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering",
+    "Development Status :: 3 - Alpha",
+]
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "scikit-learn>=1.2",
+    "scipy>=1.9",
+]
+
+[project.optional-dependencies]
+boost = ["xgboost>=1.7", "lightgbm>=3.3"]
+stats = ["statsmodels>=0.14", "formulaic>=1.0"]
+tune = ["optuna>=3.0"]
+shap = ["shap>=0.44"]
+survival = ["lifelines>=0.27", "scikit-survival>=0.22"]
+h2o = ["h2o>=3.44"]
+torch = ["torch>=2.0"]
+vision = ["torch>=2.0", "torchvision>=0.15"]
+keras = ["keras>=3.0", "tensorflow>=2.16"]
+polars = ["polars>=0.20", "narwhals>=1.0"]
+imbalance = ["imbalanced-learn>=0.11"]
+dev = ["pytest>=7", "hypothesis>=6", "ruff>=0.4", "mypy>=1.8"]
+
+[project.urls]
+Homepage = "https://github.com/zia207/pytidymodels"
+Source = "https://github.com/zia207/pytidymodels"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/pytidymodels"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
+
+[tool.ruff]
+line-length = 88
+target-version = "py310"
